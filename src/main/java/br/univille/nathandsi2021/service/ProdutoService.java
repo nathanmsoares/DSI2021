@@ -9,4 +9,5 @@ import br.univille.nathandsi2021.model.Produto;
 @Service
 public interface ProdutoService {
     public List<Produto> getAll();
+    public void save(Produto produto);
 }
