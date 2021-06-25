@@ -47,8 +47,7 @@
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-	</dependencies>
-
+		
 	    <dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>bootstrap-glyphicons</artifactId>
@@ -64,6 +63,9 @@
 			<artifactId>jquery</artifactId>
 			<version>3.0.0</version>
 		</dependency>
+		
+	</dependencies>
+
 
 	<build>
 		<plugins>
