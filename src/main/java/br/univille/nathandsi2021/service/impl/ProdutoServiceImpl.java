@@ -21,6 +21,11 @@ public class ProdutoServiceImpl implements ProdutoService{
     public void save(Produto produto) {
         repository.save(produto);
         
+    }
+    @Override
+    public void delete(Produto produto) {
+        repository.delete(produto);
+        
     };
     
 }

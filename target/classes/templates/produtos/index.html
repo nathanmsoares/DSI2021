@@ -10,7 +10,7 @@
 
             <a th:href="@{/produtos/novo}" class="btn btn-primary">Novo Paciente</a>
 
-            <table class="table">
+            <table class="table" id="produtos">
                 <thead>
                     <tr>
                         <th>Nome</th>
@@ -23,7 +23,14 @@
                         <td th:text="${umProduto.nome}">Zezinho</td>
                         <td th:text="${umProduto.peso}">Masculino</td>
                         <td th:text="${umProduto.dimensao}"></td>
-                        <td><a th:href="@{'/produtos/alterar/'+${umProduto.id}}" class="btn btn-secondary">Alterar</a></td>
+                        <td>
+                            <a th:href="@{'/produtos/alterar/'+${umProduto.id}}" class="btn btn-secondary">Alterar</a>
+                            <button class="btn btn-danger js-delete"
+                                    th:data-id="${umProduto.id}">
+                                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                Excluir
+                            </button>
+                        </td>
                     </tr>
 
                 </tbody>
@@ -34,5 +41,25 @@
 
 
         <div th:include="layout :: footer">(footer)</div>
+
+        
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $("#produtos").on('click', ".js-delete", function(){
+                    let button = $(this);
+                    bootbox.confirm("Confirma a exclusão do registro?",function(result){
+                        if(result){
+                            $.ajax({
+                                url : "/produtos/delete/" + button.attr("data-id"),
+                                method: "GET",
+                                success : function(){
+                                    window.location.href = "/produtos/";
+                                }
+                            });
+                        }
+                    });
+                });
+            });
+        </script> 
     </body>
 </html>

@@ -42,4 +42,10 @@ public class ProdutoController {
         System.out.println(produto.getPeso());
         return new ModelAndView("/produtos/form","produto",produto);
     }
+
+    @GetMapping("/delete/{id}")
+    public ModelAndView delete(@PathVariable("id") Produto produto){
+        service.delete(produto);
+        return new ModelAndView("redirect:/produtos");
+    }
 }
