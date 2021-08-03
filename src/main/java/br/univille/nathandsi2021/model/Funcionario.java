@@ -2,23 +2,23 @@ package br.univille.nathandsi2021.model;
 
 import java.util.Date;
 
-import javax.persistence.MappedSuperclass;
+import javax.persistence.Entity;
+// import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-@MappedSuperclass
-public class Funcionario {
-    private long id; 
+@Entity
+public class Funcionario extends Usuario {
     private String nome;
     private int cpf;
     private int telefone;
-    public long getId() {
-        return id;
-    }
+    // public long getId() {
+    //     return id;
+    // }
 
-    public void setId(long id) {
-        this.id = id;
-    }
+    // public void setId(long id) {
+    //     this.id = id;
+    // }
 
     public String getNome() {
         return nome;
