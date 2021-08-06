@@ -25,7 +25,6 @@ public class ProdutoServiceImpl implements ProdutoService{
     @Override
     public void delete(Produto produto) {
         repository.delete(produto);
-        
     };
     
 }

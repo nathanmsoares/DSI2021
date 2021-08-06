@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+    <head th:include="layout :: htmlhead"></head>
+
+    <body>
+        <div class="container">
+            <nav th:replace="layout :: menu">(menu)</nav>
+
+            <a th:href="@{/pedidos/novo}" class="btn btn-primary">Novo Pedido</a>
+
+            <table class="table" id="produtos">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Produtos</th>
+                        <th>Quantidade</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr scope="row" th:each="umPedido : ${listaPedidos}">
+                        <td th:text="${umPedido.id}">Zezinho</td>
+                        <td th:text="${umPedido.produto}">Masculino</td>
+                        <td th:text="${umPedido.quantidade}"></td>
+                        <td>
+                            <a th:href="@{'/pedidos/alterar/'+${umProduto.id}}" class="btn btn-secondary">Alterar</a>
+                            <button class="btn btn-danger js-delete"
+                                    th:data-id="${umProduto.id}">
+                                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                Excluir
+                            </button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+
+        </div>
+
+
+        <div th:include="layout :: footer">(footer)</div>
+
+        
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $("#produtos").on('click', ".js-delete", function(){
+                    let button = $(this);
+                    bootbox.confirm("Confirma a exclusão do registro?",function(result){
+                        if(result){
+                            $.ajax({
+                                url : "/produtos/delete/" + button.attr("data-id"),
+                                method: "GET",
+                                success : function(){
+                                    window.location.href = "/produtos/";
+                                }
+                            });
+                        }
+                    });
+                });
+            });
+        </script> 
+    </body>
+</html>
