@@ -25,9 +25,9 @@
                         <td th:text="${umPedido.produto}">Masculino</td>
                         <td th:text="${umPedido.quantidade}"></td>
                         <td>
-                            <a th:href="@{'/pedidos/alterar/'+${umProduto.id}}" class="btn btn-secondary">Alterar</a>
+                            <a th:href="@{'/pedidos/alterar/'+${pedido.id}}" class="btn btn-secondary">Alterar</a>
                             <button class="btn btn-danger js-delete"
-                                    th:data-id="${umProduto.id}">
+                                    th:data-id="${pedido.id}">
                                 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                                 Excluir
                             </button>
