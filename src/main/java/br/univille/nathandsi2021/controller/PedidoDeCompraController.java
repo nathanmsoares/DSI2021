@@ -1,5 +1,6 @@
 package br.univille.nathandsi2021.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.univille.nathandsi2021.model.PedidoDeCompra;
+import br.univille.nathandsi2021.model.Produto;
+import br.univille.nathandsi2021.repository.ProdutosRepository;
 import br.univille.nathandsi2021.service.PedidoService;
 
 
@@ -22,6 +25,9 @@ public class PedidoDeCompraController {
     @Autowired
     private PedidoService service;
 
+    @Autowired
+    private ProdutosRepository produtosrepository;
+
     @GetMapping
     public ModelAndView index(){
         List<PedidoDeCompra> listaPedido = service.getAll();
@@ -29,7 +35,11 @@ public class PedidoDeCompraController {
     }
     @GetMapping("/novo")
     public ModelAndView novo(@ModelAttribute PedidoDeCompra pedido){
-        return new ModelAndView("pedidos/form");
+        List<Produto> listaProdutos = this.produtosrepository.findAll();
+        HashMap<String, Object> dados = new HashMap<String, Object>();
+        dados.put("listaProdutos", listaProdutos);
+
+        return new ModelAndView("pedidos/form", dados);
     }
     @PostMapping(params="form")
     public ModelAndView save(PedidoDeCompra pedido){
