@@ -7,5 +7,4 @@ import br.univille.nathandsi2021.model.PedidoDeCompra;
 
 @Repository
 public interface PedidosRepository extends JpaRepository<PedidoDeCompra,Long>{
-    public List<PedidoDeCompra> findByIdContains(Long id);  
 }

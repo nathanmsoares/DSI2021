@@ -38,12 +38,12 @@ public class PedidoDeCompraController {
         List<Produto> listaProdutos = this.produtosrepository.findAll();
         HashMap<String, Object> dados = new HashMap<String, Object>();
         dados.put("listaProdutos", listaProdutos);
-
         return new ModelAndView("pedidos/form", dados);
     }
     @PostMapping(params="form")
     public ModelAndView save(PedidoDeCompra pedido){
         System.out.println(pedido);
+        service.save(pedido);
         return new ModelAndView("redirect:/pedidos");
     }
     @GetMapping(value="/alterar/{id}")
