@@ -17,7 +17,6 @@ public class PedidoDeCompra {
     private long id;
     @OneToMany(cascade = CascadeType.ALL)
     private List<ItemPedido> itemPedido = new ArrayList<>();
-    private float quantidade;
     
     public List<ItemPedido> getItemPedido() {
         return itemPedido;
@@ -30,13 +29,5 @@ public class PedidoDeCompra {
     }
     public void setId(long id) {
         this.id = id;
-    }
-    public float getQuantidade() {
-        return quantidade;
-    }
-    public void setQuantidade(float quantidade) {
-        this.quantidade = quantidade;
-    }
-
-    
+    }    
 }

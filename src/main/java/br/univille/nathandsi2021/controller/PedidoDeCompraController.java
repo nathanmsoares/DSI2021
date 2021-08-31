@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.univille.nathandsi2021.model.ItemPedido;
 import br.univille.nathandsi2021.model.PedidoDeCompra;
 import br.univille.nathandsi2021.model.Produto;
 import br.univille.nathandsi2021.repository.ProdutosRepository;
@@ -36,8 +37,11 @@ public class PedidoDeCompraController {
     @GetMapping("/novo")
     public ModelAndView novo(@ModelAttribute PedidoDeCompra pedido){
         List<Produto> listaProdutos = this.produtosrepository.findAll();
+        ItemPedido itemPedido = new ItemPedido();
         HashMap<String, Object> dados = new HashMap<String, Object>();
+        dados.put("pedido", pedido);
         dados.put("listaProdutos", listaProdutos);
+        dados.put("itemPedido", itemPedido);
         return new ModelAndView("pedidos/form", dados);
     }
     @PostMapping(params="form")

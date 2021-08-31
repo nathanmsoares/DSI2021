@@ -13,7 +13,6 @@ public class ItemPedido {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private float peso;
-    private String dimensao;
     private float preco;
     @ManyToOne(cascade = CascadeType.ALL)
     private Produto produto;
@@ -36,11 +35,11 @@ public class ItemPedido {
     public void setPeso(float peso) {
         this.peso = peso;
     }
-    public String getDimensao() {
-        return dimensao;
+    public Produto getProduto() {
+        return produto;
     }
-    public void setDimensao(String dimensao) {
-        this.dimensao = dimensao;
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
 
     
