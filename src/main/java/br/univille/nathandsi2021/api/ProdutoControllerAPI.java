@@ -21,6 +21,7 @@ public class ProdutoControllerAPI {
     
     @GetMapping
     public ResponseEntity<List<Produto>> getAll(){
-        return new ResponseEntity<List<Produto>>(service.getAll(), HttpStatus.OK);
+        List<Produto> listaProduto = service.getAll();
+        return new ResponseEntity<List<Produto>>(listaProduto, HttpStatus.OK);
     }
 }
