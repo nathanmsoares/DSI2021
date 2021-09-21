@@ -9,5 +9,4 @@ import br.univille.nathandsi2021.model.Produto;
 
 @Repository
 public interface ProdutosRepository extends JpaRepository<Produto,Long>{
-    public List<Produto> findByNomeContains(String nome);
 }

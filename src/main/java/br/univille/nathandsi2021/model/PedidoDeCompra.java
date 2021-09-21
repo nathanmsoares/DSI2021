@@ -17,7 +17,14 @@ public class PedidoDeCompra {
     private long id;
     @OneToMany(cascade = CascadeType.ALL)
     private List<ItemPedido> itemPedido = new ArrayList<>();
+    private Funcionario funcionario;
     
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
+    }
     public List<ItemPedido> getItemPedido() {
         return itemPedido;
     }

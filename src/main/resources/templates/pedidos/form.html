@@ -8,8 +8,31 @@
         <div class="container">
             <nav th:replace="layout :: menu (buttons = ${ {} })">(menu)</nav>
             <div class="border border-dark">
-                <form th:action="@{/pedidos/(form)}" th:object="${pedido}" method="POST">
+                <form th:action="@{/pedidos/}" th:object="${pedido}" method="POST">
                     <input type="hidden" th:field="*{id}">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Funcionario:</label>
+                                <!-- <select class="form-control" id="slcpaciente" th:field="*{funcionario}"> -->
+                                <select class="form-control" th:field="*{funcionario}">
+                                    <option th:value="${umFuncionario.id}" 
+                                            th:text="${umFuncionario.nome}"
+                                            th:each="umFuncionario : ${listaFuncionarios}">
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Data:</label>
+                                <input type="datetime-local" th:field="*{data}" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- <div class="form-group">
                         <div class="row">
                             <div class="col-6">
