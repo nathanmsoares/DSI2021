@@ -17,6 +17,7 @@ import br.univille.nathandsi2021.model.ItemPedido;
 import br.univille.nathandsi2021.model.PedidoDeCompra;
 import br.univille.nathandsi2021.model.Produto;
 import br.univille.nathandsi2021.repository.ProdutosRepository;
+import br.univille.nathandsi2021.service.FuncionarioService;
 import br.univille.nathandsi2021.service.PedidoService;
 import br.univille.nathandsi2021.service.ProdutoService;
 
@@ -31,6 +32,9 @@ public class PedidoDeCompraController {
     @Autowired
     private ProdutoService serviceProduto;
 
+    @Autowired
+    private FuncionarioService funcionarioService;
+
     @GetMapping
     public ModelAndView index(){
         List<PedidoDeCompra> listaPedidos = service.getAll();
@@ -40,11 +44,11 @@ public class PedidoDeCompraController {
     public ModelAndView novo(@ModelAttribute PedidoDeCompra pedido){
         List<Produto> listaProdutos = this.serviceProduto.getAll();
         ItemPedido itemPedido = new ItemPedido();
-        // List<Funcionario> funcionario = this.
-        // TODO: Continuar aqui
+        List<Funcionario> funcionarios = this.funcionarioService.getAll();
         HashMap<String, Object> dados = new HashMap<String, Object>();
         dados.put("pedido", pedido);
         dados.put("listaProdutos", listaProdutos);
+        dados.put("listaFuncionarios", funcionarios);
         dados.put("itemPedido", itemPedido);
         return new ModelAndView("pedidos/form", dados);
     }

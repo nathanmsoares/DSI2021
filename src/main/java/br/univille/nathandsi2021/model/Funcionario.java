@@ -10,8 +10,8 @@ import javax.persistence.TemporalType;
 @Entity
 public class Funcionario extends Usuario {
     private String nome;
-    private int cpf;
-    private int telefone;
+    private String cpf;
+    private String telefone;
     // public long getId() {
     //     return id;
     // }
@@ -28,19 +28,19 @@ public class Funcionario extends Usuario {
         this.nome = nome;
     }
 
-    public int getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
-    public int getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 
@@ -60,11 +60,11 @@ public class Funcionario extends Usuario {
         this.data_nascimento = data_nascimento;
     }
 
-    public int getDepedentes() {
+    public String getDepedentes() {
         return depedentes;
     }
 
-    public void setDepedentes(int depedentes) {
+    public void setDepedentes(String depedentes) {
         this.depedentes = depedentes;
     }
 
@@ -73,6 +73,6 @@ public class Funcionario extends Usuario {
     @Temporal(value = TemporalType.DATE)
     private Date data_nascimento;
     
-    private int depedentes;
+    private String depedentes;
 
 }

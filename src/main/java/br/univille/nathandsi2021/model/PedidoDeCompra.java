@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -17,6 +18,7 @@ public class PedidoDeCompra {
     private long id;
     @OneToMany(cascade = CascadeType.ALL)
     private List<ItemPedido> itemPedido = new ArrayList<>();
+    @ManyToOne(cascade = CascadeType.ALL)
     private Funcionario funcionario;
     
     public Funcionario getFuncionario() {

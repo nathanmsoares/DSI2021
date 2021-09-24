@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+    <head th:include="layout :: htmlhead"></head>
+
+    <body>
+        <div class="container">
+            <nav th:replace="layout :: menu">(menu)</nav>
+            <div class="border border-dark">
+                <form th:action="@{/fornecedor/(form)}" th:object="${fornecedor}" method="POST">
+                    <input type="hidden" th:field="*{id}">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Nome:</label>
+                                <input type="text" th:field="*{nome}" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-6">
+                                <label>CNPJ:</label>
+                                <input type="text" th:field="*{cnpj}" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Telefone:</label>
+                                <input type="text" th:field="*{telefone}" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Email:</label>
+                                <input type="text" th:field="*{email}" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Endereço:</label>
+                                <input type="text" th:field="*{endereco}" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
+            </div>
+        </div>
+        <div th:include="layout :: footer">(footer)</div>
+    </body>
+</html>  

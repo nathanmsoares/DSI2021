@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+    <head th:include="layout :: htmlhead"></head>
+
+    <body>
+        <div class="container">
+            <nav th:replace="layout :: menu">(menu)</nav>
+
+            <a th:href="@{/funcionarios/novo}" class="btn btn-primary">Novo Funcionario</a>
+
+            <table class="table" id="funcionarios">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>Telefone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr scope="row" th:each="umFuncionario : ${listaFuncionarios}">
+                        <td th:text="${umFuncionario.nome}"></td>
+                        <td th:text="${umFuncionario.cpf}"></td>
+                        <td th:text="${umFuncionario.telefone}"></td>
+                        <td>
+                            <a th:href="@{'/funcionarios/alterar/'+${umFuncionario.id}}" class="btn btn-secondary">Alterar</a>
+                            <button class="btn btn-danger js-delete"
+                                    th:data-id="${umFuncionario.id}">
+                                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                Excluir
+                            </button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+
+        </div>
+
+
+        <div th:include="layout :: footer">(footer)</div>
+
+        
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $("#funcionarios").on('click', ".js-delete", function(){
+                    let button = $(this);
+                    bootbox.confirm("Confirma a exclusão do registro?",function(result){
+                        if(result){
+                            $.ajax({
+                                url : "/funcionarios/delete/" + button.attr("data-id"),
+                                method: "GET",
+                                success : function(){
+                                    window.location.href = "/funcionarios/";
+                                }
+                            });
+                        }
+                    });
+                });
+            });
+        </script> 
+    </body>
+</html>
