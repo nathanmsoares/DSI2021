@@ -1,11 +1,7 @@
 package br.univille.nathandsi2021.model;
 
-import java.util.Date;
 
 import javax.persistence.Entity;
-// import javax.persistence.MappedSuperclass;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 public class Funcionario extends Usuario {
@@ -52,11 +48,11 @@ public class Funcionario extends Usuario {
         this.endereco = endereco;
     }
 
-    public Date getData_nascimento() {
+    public String getData_nascimento() {
         return data_nascimento;
     }
 
-    public void setData_nascimento(Date data_nascimento) {
+    public void setData_nascimento(String data_nascimento) {
         this.data_nascimento = data_nascimento;
     }
 
@@ -70,8 +66,7 @@ public class Funcionario extends Usuario {
 
     private String endereco;
 
-    @Temporal(value = TemporalType.DATE)
-    private Date data_nascimento;
+    private String data_nascimento;
     
     private String depedentes;
 

@@ -19,9 +19,10 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <h1 th:text="${listaFornecedores}"></h1>
                     <tr scope="row" th:each="umFornecedor : ${listaFornecedores}">
-                        <td th:text="${umFornecedor.nome}"></td>
-                        <td th:text="${umFornecedor.cpf}"></td>
+                        <td th:text="${umFornecedor.name}"></td>
+                        <td th:text="${umFornecedor.cnpj}"></td>
                         <td th:text="${umFornecedor.telefone}"></td>
                         <td>
                             <a th:href="@{'/fornecedores/alterar/'+${umFornecedor.id}}" class="btn btn-secondary">Alterar</a>
@@ -45,7 +46,7 @@
         
         <script type="text/javascript">
             $(document).ready(function(){
-                $("#funcionarios").on('click', ".js-delete", function(){
+                $("#fornecedores").on('click', ".js-delete", function(){
                     let button = $(this);
                     bootbox.confirm("Confirma a exclusão do registro?",function(result){
                         if(result){

@@ -12,8 +12,8 @@ public class Fornecedor {
     private long id;
     private String name;
     private String endereco;
-    private int telefone;
-    private int cnpj;
+    private long telefone;
+    private long cnpj;
     private String email;
 
     public long getId() {
@@ -34,16 +34,16 @@ public class Fornecedor {
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
-    public int getTelefone() {
+    public long getTelefone() {
         return telefone;
     }
-    public void setTelefone(int telefone) {
+    public void setTelefone(long telefone) {
         this.telefone = telefone;
     }
-    public int getCnpj() {
+    public long getCnpj() {
         return cnpj;
     }
-    public void setCnpj(int cnpj) {
+    public void setCnpj(long cnpj) {
         this.cnpj = cnpj;
     }
     public String getEmail() {
@@ -51,6 +51,10 @@ public class Fornecedor {
     }
     public void setEmail(String email) {
         this.email = email;
+    }
+    @Override
+    public String toString() {
+        return "Fornecedor [name=" + name + "]";
     }
 
 

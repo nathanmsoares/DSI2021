@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import br.univille.nathandsi2021.model.Fornecedor;
 import br.univille.nathandsi2021.service.FornecedorService;
-import br.univille.nathandsi2021.service.FuncionarioService;
 
 @Controller
 @RequestMapping("/fornecedores")
@@ -23,7 +22,7 @@ public class FornecedorController{
     @GetMapping
     public ModelAndView index(){
         List<Fornecedor> listaFornecedores = service.getAll();
-        return new ModelAndView("fornecedor/index", "listaFornecedores", listaFornecedores);
+        return new ModelAndView("fornecedores/index", "listaFornecedores", listaFornecedores);
     }
     @GetMapping("/novo")
     public ModelAndView novo(@ModelAttribute Fornecedor fornecedor){
