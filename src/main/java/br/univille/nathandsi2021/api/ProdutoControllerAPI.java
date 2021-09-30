@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.univille.nathandsi2021.model.Produto;
 import br.univille.nathandsi2021.service.ProdutoService;
-import io.swagger.models.Response;
 
 @RestController
 @RequestMapping("/api/v1/produtos")
@@ -33,7 +32,7 @@ public class ProdutoControllerAPI {
     @PostMapping
     public ResponseEntity<Produto> insert(@RequestBody Produto produto){
         try{
-            produto.setId(0);
+            produto.setIdd(0);
             service.save(produto);
             return new ResponseEntity<Produto>(produto, HttpStatus.CREATED);
         }catch (Exception ex){
@@ -44,14 +43,14 @@ public class ProdutoControllerAPI {
     @PostMapping("/list")
     public ResponseEntity<List<Produto>> insertList(@RequestBody List<Produto> listaProdutos){
         for(Produto umProduto: listaProdutos){
-            umProduto.setId(0);
+            umProduto.setIdd(0);
             service.save(umProduto);
         }
         return new ResponseEntity<List<Produto>>(listaProdutos,HttpStatus.CREATED);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Produto> getById(@PathVariable("id") Produto produto){
+    @GetMapping("/{idd}")
+    public ResponseEntity<Produto> getById(@PathVariable("idd") Produto produto){
         return new ResponseEntity<>(produto, HttpStatus.OK);
     }
 

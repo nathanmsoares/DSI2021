@@ -13,26 +13,26 @@
             <table class="table" id="pedidos">
                 <thead>
                     <tr>
-                        <th>Id</th>
+                        <th>Funcionario</th>
                         <th>Produtos</th>
-                        <th>Quantidade</th>
+                        <th>Data</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- <tr scope="row" th:each="umPedido : ${listaPedidos}">
+                    <tr scope="row" th:each="umPedido : ${listaPedidos}">
                         <td th:text="${umPedido.funcionario}">Zezinho</td>
                         <td th:text="${umPedido.listaItemPedido}">Masculino</td>
                         <td th:text="${umPedido.data}"></td>
-                        <td>
+                        <!-- <td>
                             <a th:href="@{'/pedidos/alterar/'+${pedido.id}}" class="btn btn-secondary">Alterar</a>
                             <button class="btn btn-danger js-delete"
                                     th:data-id="${pedido.id}">
                                 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                                 Excluir
                             </button>
-                        </td>
-                    </tr> -->
+                        </td> -->
+                    </tr>
 
                 </tbody>
             </table>

@@ -23,7 +23,7 @@ public class PedidoDeCompra {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval=true)
-    @JoinColumn(name="pedidodecompra_id")
+    @JoinColumn(name="pedido_de_compra_id")
     private List<ItemPedido> listaItemPedido = new ArrayList<>();
     @ManyToOne(cascade = CascadeType.ALL)
     private Funcionario funcionario;

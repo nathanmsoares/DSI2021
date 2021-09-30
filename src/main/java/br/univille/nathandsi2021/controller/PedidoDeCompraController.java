@@ -75,7 +75,7 @@ public class PedidoDeCompraController {
     }
 
     @PostMapping(params= {"insertproc"})
-    public ModelAndView insertproc(PedidoDeCompra pedido, ItemPedido itemPedido) {
+    public ModelAndView insertproc(PedidoDeCompra pedido, ItemPedido itemPedido, Produto produtos) {
         pedido.getListaItemPedido().add(itemPedido);
         List<Produto> listaProdutos = this.serviceProduto.getAll();
         ItemPedido novoItemPedido = new ItemPedido();

@@ -24,9 +24,9 @@
                         <td th:text="${umProduto.peso}">Masculino</td>
                         <td th:text="${umProduto.dimensao}"></td>
                         <td>
-                            <a th:href="@{'/produtos/alterar/'+${umProduto.id}}" class="btn btn-secondary">Alterar</a>
+                            <a th:href="@{'/produtos/alterar/'+${umProduto.idd}}" class="btn btn-secondary">Alterar</a>
                             <button class="btn btn-danger js-delete"
-                                    th:data-id="${umProduto.id}">
+                                    th:data-id="${umProduto.idd}">
                                 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                                 Excluir
                             </button>

@@ -63,15 +63,14 @@
                                 <div class="col-sm">
                                   <input type="text" class="form-control" id="txtvalor" th:field="${itemPedido.preco}">
                                 </div>
-                                <div class="col-sm">
                                     <label for="txtvalor">Produto</label>
-                                </div>
-                                <select th:field="*{produto}">
-                                    <option th:value="${umProduto.id}" 
-                                            th:text="${umProduto.nome}"
-                                            th:each="umProduto : ${listaProdutos}">
-                                    </option>
-                                </select>
+                                    <select th:field="*{produto}">
+                                        <option th:value="${umProduto.idd}" 
+                                                th:text="${umProduto.nome}"
+                                                th:each="umProduto : ${listaProdutos}">
+                                        </option>
+                                    </select>
+
                                 <div class="col-sm">
                                     <button type="submit" name="insertproc" class="btn btn-primary">Inserir item</button>
                                 </div>
@@ -86,15 +85,18 @@
                                 <tr>
                                     <th scope="col">Procedimento</th>
                                     <th scope="col">Valor</th>
-                                    <th scope="col"></th>
+                                    <th scope="col">Produto</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr scope="row" th:each="procreali, stat : ${pedido.listaItemPedido}">
                                     <input type="hidden" th:field="${pedido.listaItemPedido[__${stat.index}__].peso}"/>
                                     <input type="hidden" th:field="${pedido.listaItemPedido[__${stat.index}__].preco}"/>
+                                    <input type="hidden" th:field="${pedido.listaItemPedido[__${stat.index}__].produto}"/>
                                     <td th:text="${procreali.peso}"></td>
                                     <td th:text="${procreali.preco}"></td>
+                                    <td th:text="${procreali.produto}"></td>
+
                                     <!-- <td>
                                         <button type="submit" name="removeproc" th:value="__${stat.index}__" class="btn btn-primary">Remover</button>
                                     </td> -->

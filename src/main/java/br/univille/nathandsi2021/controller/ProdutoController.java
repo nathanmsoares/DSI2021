@@ -36,15 +36,15 @@ public class ProdutoController {
         service.save(produto);
         return new ModelAndView("redirect:/produtos");
     }
-    @GetMapping(value="/alterar/{id}")
-    public ModelAndView alterar(@PathVariable("id") Produto produto){
+    @GetMapping(value="/alterar/{idd}")
+    public ModelAndView alterar(@PathVariable("idd") Produto produto){
         System.out.println(produto.getNome());
         System.out.println(produto.getPeso());
         return new ModelAndView("/produtos/form","produto",produto);
     }
 
-    @GetMapping("/delete/{id}")
-    public ModelAndView delete(@PathVariable("id") Produto produto){
+    @GetMapping("/delete/{idd}")
+    public ModelAndView delete(@PathVariable("idd") Produto produto){
         service.delete(produto);
         return new ModelAndView("redirect:/produtos");
     }

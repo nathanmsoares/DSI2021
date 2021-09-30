@@ -9,16 +9,16 @@ import javax.persistence.Id;
 public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long idd;
     private String nome;
     private float peso;
     private String dimensao;
 
-    public long getId() {
-        return id;
+    public long getIdd() {
+        return idd;
     }
-    public void setId(long id) {
-        this.id = id;
+    public void setIdd(long idd) {
+        this.idd = idd;
     }
     public String getNome() {
         return nome;
@@ -40,7 +40,7 @@ public class Produto {
     }
     @Override
     public String toString() {
-        return "Produto [dimensao=" + dimensao + ", id=" + id + ", nome=" + nome + ", peso=" + peso + "]";
+        return "Produto [dimensao=" + dimensao + ", id=" + idd + ", nome=" + nome + ", peso=" + peso + "]";
     }
 
     

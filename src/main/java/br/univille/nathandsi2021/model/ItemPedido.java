@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -15,6 +16,7 @@ public class ItemPedido {
     private float peso;
     private float preco;
     @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "produto_id")
     private Produto produto;
 
     public float getPreco() {
@@ -40,6 +42,10 @@ public class ItemPedido {
     }
     public void setProduto(Produto produto) {
         this.produto = produto;
+    }
+    @Override
+    public String toString() {
+        return "ItemPedido [id=" + id + ", peso=" + peso + ", preco=" + preco + ", produto=" + produto + "]";
     }
 
     
