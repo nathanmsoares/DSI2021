@@ -70,4 +70,9 @@ public class Funcionario extends Usuario {
     
     private String depedentes;
 
+    @Override
+    public String toString() {
+        return "Funcionario [data_nascimento=" + data_nascimento + ", nome=" + nome + ", telefone=" + telefone + "]";
+    }
+
 }

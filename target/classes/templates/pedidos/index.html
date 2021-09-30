@@ -10,7 +10,7 @@
 
             <a th:href="@{/pedidos/novo}" class="btn btn-primary">Novo Pedido</a>
 
-            <table class="table" id="produtos">
+            <table class="table" id="pedidos">
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -20,10 +20,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr scope="row" th:each="umPedido : ${listaPedidos}">
-                        <td th:text="${umPedido.id}">Zezinho</td>
-                        <td th:text="${umPedido.produto}">Masculino</td>
-                        <td th:text="${umPedido.quantidade}"></td>
+                    <!-- <tr scope="row" th:each="umPedido : ${listaPedidos}">
+                        <td th:text="${umPedido.funcionario}">Zezinho</td>
+                        <td th:text="${umPedido.listaItemPedido}">Masculino</td>
+                        <td th:text="${umPedido.data}"></td>
                         <td>
                             <a th:href="@{'/pedidos/alterar/'+${pedido.id}}" class="btn btn-secondary">Alterar</a>
                             <button class="btn btn-danger js-delete"
@@ -32,7 +32,7 @@
                                 Excluir
                             </button>
                         </td>
-                    </tr>
+                    </tr> -->
 
                 </tbody>
             </table>
@@ -44,23 +44,23 @@
         <div th:include="layout :: footer">(footer)</div>
 
         
-        <script type="text/javascript">
+        <!-- <script type="text/javascript">
             $(document).ready(function(){
-                $("#produtos").on('click', ".js-delete", function(){
+                $("#pedidos").on('click', ".js-delete", function(){
                     let button = $(this);
                     bootbox.confirm("Confirma a exclusão do registro?",function(result){
                         if(result){
                             $.ajax({
-                                url : "/produtos/delete/" + button.attr("data-id"),
+                                url : "/pedidos/delete/" + button.attr("data-id"),
                                 method: "GET",
                                 success : function(){
-                                    window.location.href = "/produtos/";
+                                    window.location.href = "/pedidos/";
                                 }
                             });
                         }
                     });
                 });
             });
-        </script> 
+        </script>  -->
     </body>
 </html>

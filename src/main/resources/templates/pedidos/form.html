@@ -14,11 +14,25 @@
                         <div class="row">
                             <div class="col-6">
                                 <label>Funcionario:</label>
-                                <select class="form-control" id="slcpaciente" th:field="*{funcionario}">
+                                <!-- <select class="form-control" id="slcpaciente" th:field="*{funcionario}"> -->
                                 <select class="form-control" th:field="*{funcionario}">
                                     <option th:value="${umFuncionario.id}" 
                                             th:text="${umFuncionario.nome}"
                                             th:each="umFuncionario : ${listaFuncionarios}">
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Fornecedor:</label>
+                                <!-- <select class="form-control" id="slcpaciente" th:field="*{funcionario}"> -->
+                                <select class="form-control" th:field="*{fornecedor}">
+                                    <option th:value="${umFornecedor.id}" 
+                                            th:text="${umFornecedor.name}"
+                                            th:each="umFornecedor : ${listaFornecedores}">
                                     </option>
                                 </select>
                             </div>
@@ -32,26 +46,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- <div class="form-group">
-                        <div class="row">
-                            <div class="col-6">
-                                <label>Quantidade:</label>
-                                <input type="text" th:field="*{quantidade}" class="form-control">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-6">
-                                <label>Preço:</label>
-                                <input type="text" th:field="*{preco}" class="form-control">
-                            </div>
-                        </div>
-                    </div> -->
-
-
-<!-- talvez usar esse -->
                     <div class="card">
                         <div class="card-header">Item Pedido</div>
                         <div class="card-body">
@@ -61,13 +55,13 @@
                                     <label for="txtprocedimento">Peso</label>
                                 </div>
                                 <div class="col-md">
-                                  <input type="text" class="form-control" id="txtvalor" th:field="${itemPedido.peso}" placeholder="Descrição">
+                                  <input type="text" class="form-control" id="txtvalor" th:field="${itemPedido.peso}">
                                 </div>
                                 <div class="col-sm">
                                   <label for="txtvalor">Preço</label>
                                 </div>
                                 <div class="col-sm">
-                                  <input type="text" class="form-control" id="txtvalor" th:field="${itemPedido.preco}" placeholder="Preco">
+                                  <input type="text" class="form-control" id="txtvalor" th:field="${itemPedido.preco}">
                                 </div>
                                 <div class="col-sm">
                                     <label for="txtvalor">Produto</label>
@@ -78,7 +72,6 @@
                                             th:each="umProduto : ${listaProdutos}">
                                     </option>
                                 </select>
-                                  
                                 <div class="col-sm">
                                     <button type="submit" name="insertproc" class="btn btn-primary">Inserir item</button>
                                 </div>
@@ -87,24 +80,29 @@
                             <br>                           
                         </div>
                     </div>
-
-
-
-
-                    <!-- <div class="form-group">
-                        <div class="row">
-                            <div class="col-6">
-                                <label for="slccidade">Produto:</label>
-                                <select class="form-control" id="slccidade" th:field="*{produto}">
-                                    <option th:value="${umProduto.id}" 
-                                            th:text="${umProduto.nome}"
-                                            th:each="umProduto : ${listaProdutos}">
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
-                    </div> -->
-                    
+                    <div class="card">
+                        <table class="table">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">Procedimento</th>
+                                    <th scope="col">Valor</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr scope="row" th:each="procreali, stat : ${pedido.listaItemPedido}">
+                                    <input type="hidden" th:field="${pedido.listaItemPedido[__${stat.index}__].peso}"/>
+                                    <input type="hidden" th:field="${pedido.listaItemPedido[__${stat.index}__].preco}"/>
+                                    <td th:text="${procreali.peso}"></td>
+                                    <td th:text="${procreali.preco}"></td>
+                                    <!-- <td>
+                                        <button type="submit" name="removeproc" th:value="__${stat.index}__" class="btn btn-primary">Remover</button>
+                                    </td> -->
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- <h1 th:field=*{pedido.listaItemPedido}></h1> -->
+                    </div>
                     <button type="submit" class="btn btn-primary">Enviar</button>
                 </form>
             </div>

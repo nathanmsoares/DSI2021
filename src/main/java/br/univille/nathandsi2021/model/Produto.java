@@ -38,6 +38,10 @@ public class Produto {
     public void setDimensao(String dimensao) {
         this.dimensao = dimensao;
     }
+    @Override
+    public String toString() {
+        return "Produto [dimensao=" + dimensao + ", id=" + id + ", nome=" + nome + ", peso=" + peso + "]";
+    }
 
     
 }

@@ -12,11 +12,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.univille.nathandsi2021.model.Fornecedor;
 import br.univille.nathandsi2021.model.Funcionario;
 import br.univille.nathandsi2021.model.ItemPedido;
 import br.univille.nathandsi2021.model.PedidoDeCompra;
 import br.univille.nathandsi2021.model.Produto;
-import br.univille.nathandsi2021.repository.ProdutosRepository;
+import br.univille.nathandsi2021.service.FornecedorService;
 import br.univille.nathandsi2021.service.FuncionarioService;
 import br.univille.nathandsi2021.service.PedidoService;
 import br.univille.nathandsi2021.service.ProdutoService;
@@ -35,6 +36,9 @@ public class PedidoDeCompraController {
     @Autowired
     private FuncionarioService funcionarioService;
 
+    @Autowired
+    private FornecedorService fornecedorService;
+
     @GetMapping
     public ModelAndView index(){
         List<PedidoDeCompra> listaPedidos = service.getAll();
@@ -45,14 +49,16 @@ public class PedidoDeCompraController {
         List<Produto> listaProdutos = this.serviceProduto.getAll();
         ItemPedido itemPedido = new ItemPedido();
         List<Funcionario> funcionarios = this.funcionarioService.getAll();
+        List<Fornecedor> fornecedores = this.fornecedorService.getAll();
         HashMap<String, Object> dados = new HashMap<String, Object>();
         dados.put("pedido", pedido);
         dados.put("listaProdutos", listaProdutos);
         dados.put("listaFuncionarios", funcionarios);
         dados.put("itemPedido", itemPedido);
+        dados.put("listaFornecedores", fornecedores);
         return new ModelAndView("pedidos/form", dados);
     }
-    @PostMapping(params="form")
+    @PostMapping()
     public ModelAndView save(PedidoDeCompra pedido){
         System.out.println(pedido);
         service.save(pedido);
@@ -67,5 +73,36 @@ public class PedidoDeCompraController {
         service.delete(pedido);
         return new ModelAndView("redirect:/pedidos");
     }
+
+    @PostMapping(params= {"insertproc"})
+    public ModelAndView insertproc(PedidoDeCompra pedido, ItemPedido itemPedido) {
+        pedido.getListaItemPedido().add(itemPedido);
+        List<Produto> listaProdutos = this.serviceProduto.getAll();
+        ItemPedido novoItemPedido = new ItemPedido();
+        List<Funcionario> funcionarios = this.funcionarioService.getAll();
+        List<Fornecedor> fornecedores = this.fornecedorService.getAll();
+        HashMap<String, Object> dados = new HashMap<String, Object>();
+        dados.put("pedido", pedido);
+        dados.put("listaProdutos", listaProdutos);
+        dados.put("listaFuncionarios", funcionarios);
+        dados.put("itemPedido", novoItemPedido);
+        dados.put("listaFornecedores", fornecedores);
+        return new ModelAndView("pedidos/form", dados);
+    }
+   
+    // @PostMapping(params= {"removeproc"})
+    // public ModelAndView removeproc(@RequestParam(name = "removeproc") int index, Consulta consulta, ProcedimentoRealizado novoprocrealizado) {
+    //     List<Paciente> listaPacientes = this.pacienteService.getAll();
+       
+    //     consulta.getListaProcedimentos().remove(index);
+   
+    //     HashMap<String, Object> dados = new HashMap<String, Object>();
+    //     dados.put("consulta", consulta);
+    //     dados.put("listaPacientes", listaPacientes);
+    //     dados.put("novoprocrealizado", new ProcedimentoRealizado());
+       
+    //     return new ModelAndView("consulta/form",dados);
+    // }
+
     
 }
