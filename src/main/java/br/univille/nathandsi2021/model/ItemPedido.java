@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -15,8 +14,7 @@ public class ItemPedido {
     private long id;
     private float peso;
     private float preco;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "produto_id")
+    @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.MERGE})
     private Produto produto;
 
     public float getPreco() {

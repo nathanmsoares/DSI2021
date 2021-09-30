@@ -25,12 +25,12 @@ public class PedidoDeCompra {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval=true)
     @JoinColumn(name="pedido_de_compra_id")
     private List<ItemPedido> listaItemPedido = new ArrayList<>();
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.MERGE})
     private Funcionario funcionario;
     @Temporal(value = TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private Date data;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.MERGE})
     private Fornecedor fornecedor;
 
     public Fornecedor getFornecedor() {

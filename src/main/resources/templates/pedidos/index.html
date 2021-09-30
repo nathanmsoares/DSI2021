@@ -13,10 +13,10 @@
             <table class="table" id="pedidos">
                 <thead>
                     <tr>
-                        <th>Funcionario</th>
-                        <th>Produtos</th>
-                        <th>Data</th>
-                        <th></th>
+                        <th scope="col">Funcionario</th>
+                        <th scope="col">Produtos</th>
+                        <th scope="col">Data</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,14 +24,14 @@
                         <td th:text="${umPedido.funcionario}">Zezinho</td>
                         <td th:text="${umPedido.listaItemPedido}">Masculino</td>
                         <td th:text="${umPedido.data}"></td>
-                        <!-- <td>
-                            <a th:href="@{'/pedidos/alterar/'+${pedido.id}}" class="btn btn-secondary">Alterar</a>
+                        <td>
+                            <a th:href="@{'/pedidos/alterar/'+${umPedido.id}}" class="btn btn-secondary">Alterar</a>
                             <button class="btn btn-danger js-delete"
-                                    th:data-id="${pedido.id}">
+                                    th:data-id="${umPedido.id}">
                                 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                                 Excluir
                             </button>
-                        </td> -->
+                        </td>
                     </tr>
 
                 </tbody>
@@ -44,7 +44,7 @@
         <div th:include="layout :: footer">(footer)</div>
 
         
-        <!-- <script type="text/javascript">
+        <script type="text/javascript">
             $(document).ready(function(){
                 $("#pedidos").on('click', ".js-delete", function(){
                     let button = $(this);
@@ -61,6 +61,6 @@
                     });
                 });
             });
-        </script>  -->
+        </script> 
     </body>
 </html>

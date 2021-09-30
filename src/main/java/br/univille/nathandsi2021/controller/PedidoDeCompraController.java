@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.univille.nathandsi2021.model.Fornecedor;
@@ -66,7 +67,17 @@ public class PedidoDeCompraController {
     }
     @GetMapping(value="/alterar/{id}")
     public ModelAndView alterar(@PathVariable("id") PedidoDeCompra pedido){
-        return new ModelAndView("/pedidos/form", "pedido", pedido);
+        List<Produto> listaProdutos = this.serviceProduto.getAll();
+        ItemPedido itemPedido = new ItemPedido();
+        List<Funcionario> funcionarios = this.funcionarioService.getAll();
+        List<Fornecedor> fornecedores = this.fornecedorService.getAll();
+        HashMap<String, Object> dados = new HashMap<String, Object>();
+        dados.put("pedido", pedido);
+        dados.put("listaProdutos", listaProdutos);
+        dados.put("listaFuncionarios", funcionarios);
+        dados.put("itemPedido", itemPedido);
+        dados.put("listaFornecedores", fornecedores);
+        return new ModelAndView("pedidos/form", dados);
     }
     @GetMapping("/delete/{id}")
     public ModelAndView delete(@PathVariable("id") PedidoDeCompra pedido){
@@ -90,19 +101,21 @@ public class PedidoDeCompraController {
         return new ModelAndView("pedidos/form", dados);
     }
    
-    // @PostMapping(params= {"removeproc"})
-    // public ModelAndView removeproc(@RequestParam(name = "removeproc") int index, Consulta consulta, ProcedimentoRealizado novoprocrealizado) {
-    //     List<Paciente> listaPacientes = this.pacienteService.getAll();
-       
-    //     consulta.getListaProcedimentos().remove(index);
-   
-    //     HashMap<String, Object> dados = new HashMap<String, Object>();
-    //     dados.put("consulta", consulta);
-    //     dados.put("listaPacientes", listaPacientes);
-    //     dados.put("novoprocrealizado", new ProcedimentoRealizado());
-       
-    //     return new ModelAndView("consulta/form",dados);
-    // }
+    @PostMapping(params= {"removeproc"})
+    public ModelAndView removeproc(@RequestParam(name = "removeproc") int index, PedidoDeCompra pedido, ItemPedido itemPedido) {
+        pedido.getListaItemPedido().remove(index);
+        List<Produto> listaProdutos = this.serviceProduto.getAll();
+        ItemPedido novoItemPedido = new ItemPedido();
+        List<Funcionario> funcionarios = this.funcionarioService.getAll();
+        List<Fornecedor> fornecedores = this.fornecedorService.getAll();
+        HashMap<String, Object> dados = new HashMap<String, Object>();
+        dados.put("pedido", pedido);
+        dados.put("listaProdutos", listaProdutos);
+        dados.put("listaFuncionarios", funcionarios);
+        dados.put("itemPedido", novoItemPedido);
+        dados.put("listaFornecedores", fornecedores);
+        return new ModelAndView("pedidos/form", dados);
+    }
 
     
 }
