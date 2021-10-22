@@ -1,0 +1,1 @@
+insert IGNORE into USUARIO(id,usuario,senha) values(1,'admin','admin');
