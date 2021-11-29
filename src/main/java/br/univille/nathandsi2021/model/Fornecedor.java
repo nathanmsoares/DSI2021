@@ -1,9 +1,11 @@
 package br.univille.nathandsi2021.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Fornecedor {
@@ -54,6 +56,6 @@ public class Fornecedor {
     }
     @Override
     public String toString() {
-        return "Fornecedor [cnpj=" + cnpj + ", email=" + email + ", name=" + name + ", telefone=" + telefone + "]";
+        return " Fornecedor [cnpj=" + cnpj + ", email=" + email + ", name=" + name + ", telefone=" + telefone + "]";
     }
 }

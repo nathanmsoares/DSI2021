@@ -1,10 +1,12 @@
 package br.univille.nathandsi2021.model;
 
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Funcionario {
@@ -14,6 +16,10 @@ public class Funcionario {
     private String nome;
     private String cpf;
     private String telefone;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Usuario usuario;
+
+
     public long getId() {
         return id;
     }

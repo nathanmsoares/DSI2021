@@ -11,4 +11,5 @@ public interface PedidoService {
     public List<PedidoDeCompra> getAll();
     public void save(PedidoDeCompra pedido);
     public void delete(PedidoDeCompra pedido);
+    public List<PedidoDeCompra> findByAprovacao(boolean aprovacao) ;
 }

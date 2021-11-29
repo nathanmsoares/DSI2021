@@ -15,7 +15,8 @@
                     <tr>
                         <th scope="col">Funcionario</th>
                         <th scope="col">Produtos</th>
-                        <th scope="col">Data</th>
+                        <th scope="col">Preço</th>
+                        <th scope="col">Aprovação</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
@@ -23,7 +24,8 @@
                     <tr scope="row" th:each="umPedido : ${listaPedidos}">
                         <td th:text="${umPedido.funcionario}">Zezinho</td>
                         <td th:text="${umPedido.listaItemPedido}">Masculino</td>
-                        <td th:text="${umPedido.data}"></td>
+                        <td th:text="${umPedido.totalPreco}"></td>
+                        <td th:text="${umPedido.aprovacao}"></td>
                         <td>
                             <a th:href="@{'/pedidos/alterar/'+${umPedido.id}}" class="btn btn-secondary">Alterar</a>
                             <button class="btn btn-danger js-delete"

@@ -25,8 +25,8 @@ import br.univille.nathandsi2021.service.ProdutoService;
 
 
 @Controller
-@RequestMapping("/pedidos")
-public class PedidoDeCompraController {
+@RequestMapping("/aprovacao")
+public class AprovacaoController {
 
     @Autowired
     private PedidoService service;
@@ -63,7 +63,6 @@ public class PedidoDeCompraController {
     public ModelAndView save(PedidoDeCompra pedido){
         System.out.println(pedido);
         service.save(pedido);
-        System.out.println(pedido.getTotalPreco());
         return new ModelAndView("redirect:/pedidos");
     }
     @GetMapping(value="/alterar/{id}")

@@ -32,7 +32,15 @@ public class PedidoDeCompra {
     private Date data;
     @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.MERGE})
     private Fornecedor fornecedor;
+    private boolean aprovacao = false;
+    private double totalPreco;
 
+    public boolean isAprovacao() {
+        return aprovacao;
+    }
+    public void setAprovacao(boolean aprovacao) {
+        this.aprovacao = aprovacao;
+    }
     public Fornecedor getFornecedor() {
         return fornecedor;
     }
@@ -63,5 +71,17 @@ public class PedidoDeCompra {
     public void setListaItemPedido(List<ItemPedido> listaItemPedido) {
         this.listaItemPedido = listaItemPedido;
     }
+    public double getTotalPreco() {
+        double temp = 0.0;
+        for (ItemPedido itemPedido : listaItemPedido) {
+            temp += itemPedido.getPreco();
+        }
+        return temp;
+    }
+    public void setTotalPreco(double totalPreco) {
+        this.totalPreco = totalPreco;
+    }
+
+    
     
 }

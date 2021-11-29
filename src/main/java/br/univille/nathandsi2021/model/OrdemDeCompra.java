@@ -13,8 +13,9 @@ public class OrdemDeCompra {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @OneToOne(cascade = CascadeType.ALL)
-    private PedidoDeCompra pedido_de_compra;
-    private float preco;
+    private PedidoDeCompra pedidoDeCompra;
+    private double preco;
+    private String aprovado;
     
     public long getId() {
         return id;
@@ -22,18 +23,26 @@ public class OrdemDeCompra {
     public void setId(long id) {
         this.id = id;
     }
-    public PedidoDeCompra getPedido_de_compra() {
-        return pedido_de_compra;
+
+    public PedidoDeCompra getPedidoDeCompra() {
+        return pedidoDeCompra;
     }
-    public void setPedido_de_compra(PedidoDeCompra pedido_de_compra) {
-        this.pedido_de_compra = pedido_de_compra;
+    public void setPedidoDeCompra(PedidoDeCompra pedidoDeCompra) {
+        this.pedidoDeCompra = pedidoDeCompra;
     }
-    public float getPreco() {
-        return preco;
+    
+    public double getPreco() {
+        return pedidoDeCompra.getTotalPreco();
     }
-    public void setPreco(float preco) {
+    public void setPreco(double preco) {
         this.preco = preco;
     }
+    public String getAprovado() {
+        return aprovado;
+    }
+    public void setAprovado(String aprovado) {
+        this.aprovado = aprovado;
+    }   
 
     
 }
