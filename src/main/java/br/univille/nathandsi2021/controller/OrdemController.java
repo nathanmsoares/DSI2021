@@ -34,7 +34,7 @@ public class OrdemController {
     @GetMapping("/novo")
     public ModelAndView novo(@ModelAttribute OrdemDeCompra ordem){
 
-        List<PedidoDeCompra> listaPedidos = this.pedidoService.findByAprovacao(false);
+        List<PedidoDeCompra> listaPedidos = this.pedidoService.findByAprovacaoAndNegado(false, false);
         System.out.println("parar");
         HashMap<String, Object> dados = new HashMap<String, Object>();
         dados.put("listaPedidos", listaPedidos);
@@ -48,7 +48,11 @@ public class OrdemController {
         if(ordem.getPedidoDeCompra() != null){
             if(ordem.getAprovado().equals("Aprovado")){
                 ordem.getPedidoDeCompra().setAprovacao(true);
-            };
+                ordem.getPedidoDeCompra().setNegado(false);
+            } else if(ordem.getAprovado().equals("Negado")){
+                ordem.getPedidoDeCompra().setNegado(true);
+                ordem.getPedidoDeCompra().setAprovacao(false);
+            }
             service.save(ordem);
         }
         return new ModelAndView("redirect:/ordem");

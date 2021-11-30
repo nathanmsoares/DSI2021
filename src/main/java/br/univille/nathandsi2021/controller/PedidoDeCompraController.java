@@ -68,22 +68,30 @@ public class PedidoDeCompraController {
     }
     @GetMapping(value="/alterar/{id}")
     public ModelAndView alterar(@PathVariable("id") PedidoDeCompra pedido){
-        List<Produto> listaProdutos = this.serviceProduto.getAll();
-        ItemPedido itemPedido = new ItemPedido();
-        List<Funcionario> funcionarios = this.funcionarioService.getAll();
-        List<Fornecedor> fornecedores = this.fornecedorService.getAll();
-        HashMap<String, Object> dados = new HashMap<String, Object>();
-        dados.put("pedido", pedido);
-        dados.put("listaProdutos", listaProdutos);
-        dados.put("listaFuncionarios", funcionarios);
-        dados.put("itemPedido", itemPedido);
-        dados.put("listaFornecedores", fornecedores);
-        return new ModelAndView("pedidos/form", dados);
+        if(pedido.isPedidoRealizado()){
+            return new ModelAndView("redirect:/pedidos");
+        } else {
+            List<Produto> listaProdutos = this.serviceProduto.getAll();
+            ItemPedido itemPedido = new ItemPedido();
+            List<Funcionario> funcionarios = this.funcionarioService.getAll();
+            List<Fornecedor> fornecedores = this.fornecedorService.getAll();
+            HashMap<String, Object> dados = new HashMap<String, Object>();
+            dados.put("pedido", pedido);
+            dados.put("listaProdutos", listaProdutos);
+            dados.put("listaFuncionarios", funcionarios);
+            dados.put("itemPedido", itemPedido);
+            dados.put("listaFornecedores", fornecedores);
+            return new ModelAndView("pedidos/form", dados);
+        }
     }
     @GetMapping("/delete/{id}")
     public ModelAndView delete(@PathVariable("id") PedidoDeCompra pedido){
-        service.delete(pedido);
-        return new ModelAndView("redirect:/pedidos");
+        if(pedido.isPedidoRealizado()){
+            return new ModelAndView("redirect:/pedidos");
+        } else {
+            service.delete(pedido);
+            return new ModelAndView("redirect:/pedidos");
+        }
     }
 
     @PostMapping(params= {"insertproc"})

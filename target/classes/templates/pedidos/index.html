@@ -25,7 +25,7 @@
                         <td th:text="${umPedido.funcionario}">Zezinho</td>
                         <td th:text="${umPedido.listaItemPedido}">Masculino</td>
                         <td th:text="${umPedido.totalPreco}"></td>
-                        <td th:text="${umPedido.aprovacao}"></td>
+                        <td th:text="${umPedido.aprovacao} ? 'Aprovado' : 'Negado'"></td>
                         <td>
                             <a th:href="@{'/pedidos/alterar/'+${umPedido.id}}" class="btn btn-secondary">Alterar</a>
                             <button class="btn btn-danger js-delete"

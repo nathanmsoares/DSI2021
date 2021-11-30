@@ -38,6 +38,21 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-group" th:if="${pedido.aprovacao}">
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Realizado o Pedido ao Fornecedor?</label>
+                                <!-- <select class="form-control" id="slcpaciente" th:field="*{funcionario}"> -->
+                                <select class="form-control" th:field="*{pedidoRealizado}">
+                                    <option th:value=true>Sim</option>
+                                    <option th:value=false>Não</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" th:field="*{aprovacao}">
+                    <input type="hidden" th:field="*{negado}">
+
                     <div class="form-group">
                         <div class="row">
                             <div class="col-6">

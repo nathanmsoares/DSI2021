@@ -24,7 +24,7 @@ public class PedidoServiceImpl implements PedidoService{
         repository.delete(pedido);
     }
     @Override
-    public List<PedidoDeCompra> findByAprovacao(boolean aprovacao) {
-        return repository.findByAprovacao(aprovacao);
+    public List<PedidoDeCompra> findByAprovacaoAndNegado(boolean aprovacao, boolean negado) {
+        return repository.findByAprovacaoAndNegado(aprovacao, negado);
     }
 }

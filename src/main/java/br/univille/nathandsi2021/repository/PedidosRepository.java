@@ -8,6 +8,6 @@ import br.univille.nathandsi2021.model.PedidoDeCompra;
 
 @Repository
 public interface PedidosRepository extends JpaRepository<PedidoDeCompra,Long>{
-    List<PedidoDeCompra> findByAprovacao(boolean aprovacao);
+    List<PedidoDeCompra> findByAprovacaoAndNegado(boolean aprovacao, boolean negado);
 
 }

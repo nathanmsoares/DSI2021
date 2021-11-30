@@ -56,6 +56,6 @@ public class Fornecedor {
     }
     @Override
     public String toString() {
-        return " Fornecedor [cnpj=" + cnpj + ", email=" + email + ", name=" + name + ", telefone=" + telefone + "]";
+        return " Fornecedor name=" + name + "";
     }
 }

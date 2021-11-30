@@ -40,7 +40,7 @@ public class Produto {
     }
     @Override
     public String toString() {
-        return "Produto [dimensao=" + dimensao + ", id=" + idd + ", nome=" + nome + ", peso=" + peso + "]";
+        return "Produto id=" + idd + "";
     }
 
     
